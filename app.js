@@ -1,13 +1,20 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var apiRouter = require('./routes/api');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
 
-var app = express();
+const app = express();
+
+mongoose.connect('mongodb://localhost:27017/ImageFunny', { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+    console.log('Connected!');
+}).catch(err => {
+    console('Connect failed!');
+});
 
 app.use(logger('dev'));
 app.use(express.json());
