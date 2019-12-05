@@ -44,7 +44,7 @@ router.post(
   (req, res) => {
     const tempPath = req.file.path;
     const category = req.body.category || '';
-    const search_key = req.body.search_key.split(" ") || [];
+    const search_key = req.body.search_key.split(";") || [];
     const ext = path.extname(req.file.originalname).toLowerCase();
 
     switch (ext) {
